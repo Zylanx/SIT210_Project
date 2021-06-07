@@ -21,8 +21,17 @@ protected:
     std::string _statusText;
     std::string _currentText = "";
 
+    Position _flasherArea;
     Position _statusArea;
     Position _textArea;
+
+    TaskHandle_t _flasherTask = nullptr;
+    volatile bool _flasherState = false;
+
+    static void AnimateFlasher(FlasherParams *params);
+    void StartFlasher();
+    void StartFlasher(std::function<void()> callback);
+    virtual void OnFlasherEnd();
 
     void DrawChanged();
 
@@ -31,8 +40,7 @@ protected:
 public:
     EventWidget(Inkplate *display, int x, int y, int width, int height);
 
-    void Update();
-    void UpdateText(std::string text);
+    virtual void UpdateText(std::string text);
 
     virtual void Notify(DynamicJsonDocument &datas);
 };

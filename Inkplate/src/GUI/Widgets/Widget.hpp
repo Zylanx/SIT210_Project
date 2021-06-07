@@ -20,15 +20,6 @@ protected:
 
     uint8_t _maxTextLength;
     Position _position;
-    Position _flasherArea;
-
-    TaskHandle_t _flasherTask = nullptr;
-    volatile bool _flasherState = false;
-
-    static void AnimateFlasher(FlasherParams *params);
-    void StartFlasher();
-    void StartFlasher(std::function<void()> callback);
-    virtual void OnFlasherEnd();
 
     virtual void DrawChanged();
 

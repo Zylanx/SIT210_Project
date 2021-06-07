@@ -15,7 +15,6 @@ void Manager::Update()
     for (auto &&widget : widgetList)
     {
         widget->Update();
-        Serial.println("");
     }
 }
 

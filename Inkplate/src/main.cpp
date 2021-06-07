@@ -8,6 +8,7 @@
 #include "WebServer/WebServer.hpp"
 #include "GUI/Widgets/EventWidget/FollowWidget.hpp"
 #include "GUI/Widgets/EventWidget/SubscribeWidget.hpp"
+#include "GUI/Widgets/Button/ButtonWidget.hpp"
 
 // WiFi Config
 #define WIFI_SSID "WiFi-EF6B"
@@ -40,6 +41,7 @@ void setup()
     // Register the GUI Widgets
     guiManager.RegisterWidget(new FollowWidget(&display, 10, 10, 380, 125));
     guiManager.RegisterWidget(new SubscribeWidget(&display, 10, 145, 380, 125));
+    guiManager.RegisterWidget(new ButtonWidget(&display, 180, 550, 160, 40, "Pause Lights", PAD1));
 
     // Set up the display and draw the initial frame
     display.begin();
@@ -54,6 +56,7 @@ void setup()
 
 void loop()
 {
+    guiManager.Update();
     guiManager.Draw();
 
     delay(100);

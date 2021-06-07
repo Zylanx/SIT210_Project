@@ -56,4 +56,4 @@ class SIBot(commands.Bot):
         !rage and changes the lightbulb, also lets them know it activated
         """
         await ctx.send("Rage activated!")
-        await self.light.set_rage_flash()
+        await self.light.set_temporary_rage_flash()
